@@ -33,7 +33,9 @@ export const createUser = async (user: CreateUserParams) => {
       const existingUser = await users.list([
         Query.equal("email", [user.email]),
       ]);
-
+      // if (existingUser.users.length > 0) {
+      //   return { ...existingUser.users[0], existing: true };
+      // }
       return existingUser.users[0];
     }
     console.error("An error occurred while creating a new user:", error);
